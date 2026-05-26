@@ -5,9 +5,9 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       matrix:
-        libslirp_commit: [master, v4.9.1, v4.8.0, v4.1.0]
+        libslirp_commit: [master, v4.9.2, v4.8.0, v4.1.0]
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - run: docker build -t slirp4netns-tests --build-arg LIBSLIRP_COMMIT -f Dockerfile.tests .
       env:
         LIBSLIRP_COMMIT: ${{ matrix.libslirp_commit }}
